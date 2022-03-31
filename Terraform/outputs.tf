@@ -1,7 +1,7 @@
-# output "db_connection_string" {
-#   description = "Connection string to the database"
-#   value = "host=sela-week5-postgresql-server.postgres.database.azure.com port=5432 dbname=postgres user=${var.psotgres-administrator-login} password=${var.postgres-password} sslmode=require"
-# }
+output "db_connection_string" {
+  description = "Connection string to the database"
+  value = "host=${azurerm_postgresql_flexible_server.postgresqlserver.name}.postgres.database.azure.com port=5432 dbname=postgres user=${var.psotgres-administrator-login} password=${var.postgres-password} sslmode=require"
+}
 
 output "postgres-password" {
   description = "Postgres password"

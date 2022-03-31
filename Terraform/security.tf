@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "WebTierNSG" {
-  name                = "${var.prefix}WebTierNSG"
+  name                = "${local.prefix}WebTierNSG"
   location            = local.location
   resource_group_name = local.rg-name
 
@@ -28,7 +28,7 @@ resource "azurerm_network_security_group" "WebTierNSG" {
 }
 
 resource "azurerm_network_security_group" "DataTierNSG" {
-  name                = "${var.prefix}DataTierNSG"
+  name                = "${local.prefix}DataTierNSG"
   location            = local.location
   resource_group_name = local.rg-name
 

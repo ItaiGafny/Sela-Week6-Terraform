@@ -1,11 +1,11 @@
 resource "azurerm_private_dns_zone" "dns-zone" {
   #Code="PrivateDnsZoneNameNotValid" Message="The Private DNS Zone name provided [sela-week5-postgresql-server.postgres.database.azure.com] is not valid. It can not be server name plus zone suffix."
-  name                = "week5.postgres.database.azure.com"
+  name                = "${local.prefix}.postgres.database.azure.com"
   resource_group_name = local.rg-name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "virtual-network-link" {
-  name                  = "week5VnetZone.com"
+  name                  = "${local.prefix}VnetZone.com"
   private_dns_zone_name = azurerm_private_dns_zone.dns-zone.name
   virtual_network_id    = module.vms.vnet-id
   resource_group_name   = local.rg-name
@@ -13,7 +13,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "virtual-network-link" 
 }
 
 resource "azurerm_postgresql_flexible_server" "postgresqlserver" {
-  name                = "${var.prefix}postgresql-server"
+  name                = "${local.prefix}postgresql-server"
   location            = local.location
   resource_group_name = local.rg-name
 

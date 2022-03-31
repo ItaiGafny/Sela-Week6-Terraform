@@ -46,7 +46,7 @@ resource "azurerm_subnet_network_security_group_association" "private-nsg-associ
 
 #IP address
 resource "azurerm_public_ip" "pip" {
-  name                = "PublicIPForLB"
+  name                = "${var.prefix}PublicIPForLB"
   location            = var.location
   resource_group_name = var.rg-name
   allocation_method   = "Static"
@@ -79,7 +79,7 @@ resource "azurerm_availability_set" "aset" {
 
 resource "azurerm_lb_backend_address_pool" "lb-backend-address-pool" {
   loadbalancer_id = azurerm_lb.lb.id
-  name            = "BackEndAddressPool"
+  name            = "${var.prefix}BackEndAddressPool"
 
   depends_on = [
     azurerm_lb.lb
