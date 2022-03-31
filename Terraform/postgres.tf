@@ -13,11 +13,11 @@ resource "azurerm_private_dns_zone_virtual_network_link" "virtual-network-link" 
 }
 
 resource "azurerm_postgresql_flexible_server" "postgresqlserver" {
-  name                = "${local.prefix}postgresql-server"
+  name                = "${local.prefix}-postgresql-server"
   location            = local.location
   resource_group_name = local.rg-name
 
-  sku_name = "B_Standard_B1ms"
+  sku_name = "B_Standard_B2s"#"B_Standard_B1ms"
 
   storage_mb                   = 32768
   backup_retention_days        = 7
@@ -38,6 +38,13 @@ resource "azurerm_postgresql_flexible_server" "postgresqlserver" {
     module.vms.azurerm_subnet,
     azurerm_private_dns_zone_virtual_network_link.virtual-network-link
   ]
+}
+
+resource "azurerm_postgresql_flexible_server_database" "db" {
+  name      = "postgres"
+  server_id = azurerm_postgresql_flexible_server.postgresqlserver.id
+  collation = "en_US.utf8"
+  charset   = "utf8"
 }
 
 # Set the DB to work without SSL as we do in this project
