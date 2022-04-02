@@ -1,4 +1,6 @@
 # Sela-Week6-Terraform
+## Project overview
+![Layout](/assets/week-6-envs.png)
 ## General
 
 1. Create the Terraform infrastructure, one for each environemt
