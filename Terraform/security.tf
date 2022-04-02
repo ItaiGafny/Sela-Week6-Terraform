@@ -22,7 +22,7 @@ resource "azurerm_network_security_group" "WebTierNSG" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "77.137.78.94,46.117.152.73"
+    source_address_prefixes      = var.my_ip_address
     destination_address_prefix = "*"
   }
   security_rule {

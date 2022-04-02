@@ -28,5 +28,9 @@ variable "resource_group_name" {
 
 variable "vm_size" {
   type = map(string)
+}
 
+# Allowed IP address
+variable "my_ip_address" {
+  type = set(string)
 }
