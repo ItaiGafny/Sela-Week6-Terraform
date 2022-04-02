@@ -20,4 +20,7 @@ output "vnet-name" {
 output "private-subnet-id" {
   value = azurerm_subnet.private-subnet.id
 }
+output "public-subnet-id" {
+  value = azurerm_subnet.public-subnet.id
+}
 

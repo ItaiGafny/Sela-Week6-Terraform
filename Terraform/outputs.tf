@@ -5,12 +5,13 @@ output "db_connection_string" {
 
 output "postgres-password" {
   description = "Postgres password"
-  value       = var.postgres-password
+  value       = azurerm_postgresql_flexible_server.postgresqlserver.administrator_password
+  sensitive = true
 }
 
 output "psotgres-administrator-login" {
   description = "Postgres username"
-  value       = var.psotgres-administrator-login
+  value       = azurerm_postgresql_flexible_server.postgresqlserver.administrator_login
 }
 
 output "load_balancer_public_ip_address" {
