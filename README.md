@@ -1,4 +1,4 @@
-# Sela-Week6-Ansible
+# Sela-Week6-Terraform
 ## General
 
 1. Create the Terraform infrastructure, one for each environemt
