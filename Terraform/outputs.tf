@@ -17,5 +17,8 @@ output "psotgres-administrator-login" {
 output "load_balancer_public_ip_address" {
   description = "LB public IP"
   value       = module.vms.load_balancer_public_ip_address
-
+}
+output "ansible_public_ip_address" {
+  description = "Ansible public IP"
+  value       = azurerm_public_ip.ansible-pip.ip_address
 }

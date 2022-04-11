@@ -13,7 +13,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "virtual-network-link" 
 }
 
 resource "azurerm_postgresql_flexible_server" "postgresqlserver" {
-  name                = "${local.prefix}t2-postgresql-server"
+  name                = "${local.prefix}-postgresql-server"
   location            = local.location
   resource_group_name = local.rg-name
 

@@ -1,5 +1,4 @@
 # Password file is not in git !!!
-passwords.*
 *.tfvars
 *.tfstate
 *.tfstate.backup

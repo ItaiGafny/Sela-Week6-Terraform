@@ -1,5 +1,5 @@
 # Configure the Azure provider
-terraform {
+terra form {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
