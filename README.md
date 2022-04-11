@@ -3,7 +3,7 @@
 ![Layout](Terraform/assets/week-6-envs.png)
 ## General
 1. The Terraform code is the same for 2 environments: production and staging. These environemts were created by Terraform's workspaces.
-1. Create the Terraform infrastructure, one for each environemt
+1. Create the Terraform infrastructure, one for each environemt:
     - terraform select **production**; terraform apply
     - terraform select **staging**; terraform apply
 1. Check for the outputs: 
