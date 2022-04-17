@@ -17,7 +17,7 @@ provider "azurerm" {
 # Confgiure the resource group for the project
 resource "azurerm_resource_group" "rg" {
   name     = "${var.resource_group_name[terraform.workspace]}rg"
-  location = var.location
+  location = local.location
   tags = {
     Environment = terraform.workspace
   }
@@ -27,7 +27,7 @@ module "vms" {
   source         = "./modules/vms"
   prefix         = var.prefix[terraform.workspace]
   rg-name        = local.rg-name
-  location       = var.location
+  location       = local.location
   instance_count = var.instance_count
   vm_size        = var.vm_size[terraform.workspace]
   DataTierNSG_id = azurerm_network_security_group.DataTierNSG.id
@@ -37,7 +37,7 @@ module "vms" {
 }
 
 locals {
-  location = var.location
+  location = var.location[terraform.workspace]
   prefix   = var.prefix[terraform.workspace]
   rg-name  = azurerm_resource_group.rg.name
 }

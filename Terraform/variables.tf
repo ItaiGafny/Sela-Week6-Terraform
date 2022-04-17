@@ -5,7 +5,7 @@ variable "prefix" {
 
 # Default location for all resources
 variable "location" {
-  type = string
+  type = map(string)
 }
 
 # Number of virtuall machines in the HA zone

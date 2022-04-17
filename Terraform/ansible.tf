@@ -2,7 +2,7 @@
 #IP address
 resource "azurerm_public_ip" "ansible-pip" {
   name                = "${var.prefix[terraform.workspace]}PublicIPForAnsible"
-  location            = var.location
+  location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
@@ -10,7 +10,7 @@ resource "azurerm_public_ip" "ansible-pip" {
 
 resource "azurerm_network_interface" "ansible-nic" {
   name                = "${var.prefix[terraform.workspace]}ansible"
-  location            = var.location
+  location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
@@ -23,7 +23,7 @@ resource "azurerm_network_interface" "ansible-nic" {
 # Create a new Virtual Machine
 resource "azurerm_linux_virtual_machine" "vm" {
   name                            = "${var.prefix[terraform.workspace]}vm-ansible"
-  location                        = var.location
+  location                        = local.location
   resource_group_name             = azurerm_resource_group.rg.name
   network_interface_ids           = [azurerm_network_interface.ansible-nic.id]
   size                            = var.vm_size[terraform.workspace]

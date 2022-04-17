@@ -1,5 +1,4 @@
 resource "azurerm_private_dns_zone" "dns-zone" {
-  #Code="PrivateDnsZoneNameNotValid" Message="The Private DNS Zone name provided [sela-week5-postgresql-server.postgres.database.azure.com] is not valid. It can not be server name plus zone suffix."
   name                = "${local.prefix}dns-zone.postgres.database.azure.com"
   resource_group_name = local.rg-name
 }
